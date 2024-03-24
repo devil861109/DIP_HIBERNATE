@@ -1,7 +1,18 @@
 package edu.unam.agenda.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "contact")
+@NamedQueries(
+		{@NamedQuery(name = "contactosAll", query = "FROM Contact"),
+				@NamedQuery(name = "contactoById", query = "SELECT c FROM Contact c WHERE c.id = :id"),
+				@NamedQuery(name ="contactosByTipo", query = "SELECT c FROM Contact c WHERE c.contactType.id = :idTipoContacto")
+		})
 public class Contact {
 	private Integer id;
 	private String name;
@@ -10,14 +21,19 @@ public class Contact {
 	private String address;
 	private ContactType contactType;
 	private Set<MeansContacts> meansContacts;
-	
+
+	@Id
+	@Column(name = "contact_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	@Column(name = "name", length = 50)
 	public String getName() {
 		return name;
 	}
@@ -26,6 +42,7 @@ public class Contact {
 		this.name = name;
 	}
 
+	@Column(name = "last_name", length = 200)
 	public String getLastName() {
 		return lastName;
 	}
@@ -34,6 +51,7 @@ public class Contact {
 		this.lastName = lastName;
 	}
 
+	@Column(name = "age")
 	public Integer getAge() {
 		return age;
 	}
@@ -42,6 +60,7 @@ public class Contact {
 		this.age = age;
 	}
 
+	@Column(name = "address")
 	public String getAddress() {
 		return address;
 	}
@@ -50,6 +69,9 @@ public class Contact {
 		this.address = address;
 	}
 
+	@ManyToOne(targetEntity = ContactType.class, optional = false, fetch = FetchType.LAZY) //indica el tipo de clase
+	@JoinColumn(name = "contact_type_id", nullable = false)//indicar la columna de la relacion de B
+	@Fetch(FetchMode.JOIN) //join al navegar en la propiedad
 	public ContactType getContactType() {
 		return contactType;
 	}
@@ -58,6 +80,8 @@ public class Contact {
 		this.contactType = contactType;
 	}
 
+	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Fetch(FetchMode.JOIN)
 	public Set<MeansContacts> getMeansContacts() {
 		return meansContacts;
 	}

@@ -1,10 +1,17 @@
 package edu.unam.agenda.model;
 
+import javax.persistence.*;
+
+@Entity //definir la entidad
+@Table(name = "contact_type") //indicar el nombre de la tabla que representa
 public class ContactType {
 	private Integer id;
 	private String name;
 	private String status;
 
+	@Id //indicar que la propiedad es una llave
+	@Column(name = "contact_type_id") //descripcion de la columna
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //estrategia de manejo de llave
 	public Integer getId() {
 		return id;
 	}
@@ -13,6 +20,7 @@ public class ContactType {
 		this.id = id;
 	}
 
+	@Column(name = "name", length = 50, nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -21,6 +29,7 @@ public class ContactType {
 		this.name = name;
 	}
 
+	@Column(name = "status", length = 50, nullable = false)
 	public String getStatus() {
 		return status;
 	}

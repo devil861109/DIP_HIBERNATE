@@ -1,10 +1,17 @@
 package edu.unam.agenda.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "phone_type")
 public class PhoneType {
 	private Integer id;
 	private String name;
 	private String status;
 
+	@Id
+	@Column(name = "phone_type_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return id;
 	}
@@ -13,6 +20,7 @@ public class PhoneType {
 		this.id = id;
 	}
 
+	@Column(name = "name", length = 50, nullable = false)
 	public String getName() {
 		return name;
 	}
@@ -21,6 +29,7 @@ public class PhoneType {
 		this.name = name;
 	}
 
+	@Column(name = "status", length = 50, nullable = false)
 	public String getStatus() {
 		return status;
 	}

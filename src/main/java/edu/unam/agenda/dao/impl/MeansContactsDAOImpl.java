@@ -9,7 +9,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.util.List;
 
 public class MeansContactsDAOImpl implements MeansContactsDAO {
-
 	private static MeansContactsDAOImpl instance;
 
 	private MeansContactsDAOImpl() {
@@ -59,7 +58,7 @@ public class MeansContactsDAOImpl implements MeansContactsDAO {
 		}
 		return meansContactsList;
 	}
-	
+
 	@Override
 	public List<MeansContacts> getMeansContactsByContact(Integer id) {
 		List<MeansContacts> meansContactsList = null;
