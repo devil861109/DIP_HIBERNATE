@@ -10,7 +10,7 @@ import java.util.List;
 public class ContactTypeAPP {
 	public static void main(String[] args) {
 		HibernateUtil.init();
-		
+
 		ContactTypeService contactTypeService = ContactTypeServiceImpl.getInstance();
 
 		List<ContactType> listContactType = contactTypeService.getAllContactType();
