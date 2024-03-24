@@ -5,12 +5,10 @@ import edu.unam.agenda.model.ContactType;
 import edu.unam.agenda.model.MeansContacts;
 import edu.unam.agenda.model.PhoneType;
 import edu.unam.agenda.hibernate.HibernateUtil;
+import edu.unam.agenda.service.CatalogService;
 import edu.unam.agenda.service.ContactService;
-import edu.unam.agenda.service.PhoneTypeService;
-import edu.unam.agenda.service.ContactTypeService;
+import edu.unam.agenda.service.impl.CatalogServiceImpl;
 import edu.unam.agenda.service.impl.ContactServiceImpl;
-import edu.unam.agenda.service.impl.PhoneTypeServiceImpl;
-import edu.unam.agenda.service.impl.ContactTypeServiceImpl;
 
 import java.util.HashSet;
 import java.util.List;
@@ -21,21 +19,22 @@ public class Agenda {
 		// TODO Auto-generated method stub
 		HibernateUtil.init();
 
-		ContactTypeService contactTypeService = ContactTypeServiceImpl.getInstance();
-		PhoneTypeService phoneTypeService = PhoneTypeServiceImpl.getInstance();
+		//ContactTypeService contactTypeService = ContactTypeServiceImpl.getInstance();
+		//PhoneTypeService phoneTypeService = PhoneTypeServiceImpl.getInstance();
 		ContactService contactService = ContactServiceImpl.getInstance();
+		CatalogService catalogService = CatalogServiceImpl.getInstance();
 
-		List<ContactType> tiposContacto = contactTypeService.getAllContactType();
+		List<ContactType> tiposContacto = catalogService.getAllContactType();
 		for (ContactType contactType : tiposContacto) {
 			System.out.println("El tipo contacto es:" + contactType.getName());
 		}
-		ContactType familiar = contactTypeService.getContactTypeById(1);
+		ContactType familiar = catalogService.getContactTypeById(1);
 		System.out.println("El contacto familiar===" + familiar);
-		List<PhoneType> mediosContacto = phoneTypeService.getAllPhoneTypes();
+		List<PhoneType> mediosContacto = catalogService.getAllPhoneType();
 		for (PhoneType phoneType : mediosContacto) {
 			System.out.println("El medio contacto es:" + phoneType.getName());
 		}
-		PhoneType casa = phoneTypeService.getPhoneTypeById(1);
+		PhoneType casa = catalogService.getPhoneTypeById(1);
 		System.out.println("El medio casa===" + casa);
 
 		Contact papa = new Contact();//creacion de contacto
@@ -43,10 +42,10 @@ public class Agenda {
 		papa.setLastName("Perez");
 		papa.setAddress("Calle de la Muerte");
 		papa.setAge(40);		//lenado de datos de contacto
-		ContactType laboral = contactTypeService.getContactTypeById(3); //obtencion de catalogo tipo contacto
+		ContactType laboral = catalogService.getContactTypeById(3); //obtencion de catalogo tipo contacto
 		papa.setContactType(laboral); //relacionamos contacto con tipo contacto
 
-		PhoneType celular = phoneTypeService.getPhoneTypeById(3); //obtencion de catalogo de medio contacto
+		PhoneType celular = catalogService.getPhoneTypeById(3); //obtencion de catalogo de medio contacto
 		MeansContacts contactoMedio = new MeansContacts(); //creacion de contacto medio
 		contactoMedio.setValue("0445513264578"); //llenado de datos de contacto medio
 		contactoMedio.setPhoneType(celular); //relacionamos contacto medio con catalogo medio contacto

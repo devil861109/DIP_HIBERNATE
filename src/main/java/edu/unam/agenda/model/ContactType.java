@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity //definir la entidad
 @Table(name = "contact_type") //indicar el nombre de la tabla que representa
-public class ContactType {
+public class ContactType extends Catalog<Integer> {
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	private String status;

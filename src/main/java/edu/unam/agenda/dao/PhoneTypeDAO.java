@@ -2,10 +2,8 @@ package edu.unam.agenda.dao;
 
 import edu.unam.agenda.model.PhoneType;
 
-import java.util.List;
-
-public interface PhoneTypeDAO {
-	List<PhoneType> getAllPhoneTypes();
+public interface PhoneTypeDAO extends GenericDAO<PhoneType, Integer> {
+	/*List<PhoneType> getAllPhoneTypes();
 
 	PhoneType getPhoneTypeById(Integer id);
 
@@ -13,5 +11,5 @@ public interface PhoneTypeDAO {
 
 	Boolean updatePhoneType(PhoneType phoneType);
 
-	Boolean deletePhoneType(PhoneType phoneType);
+	Boolean deletePhoneType(PhoneType phoneType);*/
 }

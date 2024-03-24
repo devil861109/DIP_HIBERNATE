@@ -1,27 +1,16 @@
 package edu.unam.agenda.dao.impl;
 
 import edu.unam.agenda.dao.ContactTypeDAO;
+import edu.unam.agenda.model.Contact;
 import edu.unam.agenda.model.ContactType;
-import edu.unam.agenda.hibernate.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.util.List;
-
-public class ContactTypeDAOImpl implements ContactTypeDAO {
-	private static ContactTypeDAOImpl instance;
-
-	private ContactTypeDAOImpl() {
-	}
-
-	public static ContactTypeDAOImpl getInstance() {
-		if (instance == null) {
-			instance = new ContactTypeDAOImpl();
-		}
-		return instance;
-	}
-
+public class ContactTypeDAOImpl extends GenericDAOImplHibernate<ContactType, Integer> implements ContactTypeDAO {
 	@Override
+	public Contact getContactById(Integer id) {
+		return null;
+	}
+
+	/*@Override
 	public ContactType getContactTypeById(Integer id) {
 		ContactType contactType = null;
 		try {
@@ -118,5 +107,5 @@ public class ContactTypeDAOImpl implements ContactTypeDAO {
 			StandardServiceRegistryBuilder.destroy(HibernateUtil.getRegistry());
 		}
 		return delete;
-	}
+	}*/
 }

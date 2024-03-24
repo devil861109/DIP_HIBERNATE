@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "phone_type")
-public class PhoneType {
+public class PhoneType extends Catalog<Integer> {
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	private String status;

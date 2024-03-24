@@ -2,14 +2,9 @@ package edu.unam.agenda.dao.impl;
 
 import edu.unam.agenda.dao.PhoneTypeDAO;
 import edu.unam.agenda.model.PhoneType;
-import edu.unam.agenda.hibernate.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import java.util.List;
-
-public class PhoneTypeDAOImpl implements PhoneTypeDAO {
-	private static PhoneTypeDAOImpl instance;
+public class PhoneTypeDAOImpl extends GenericDAOImplHibernate<PhoneType, Integer> implements PhoneTypeDAO {
+	/*private static PhoneTypeDAOImpl instance;
 
 	private PhoneTypeDAOImpl() {
 	}
@@ -38,7 +33,7 @@ public class PhoneTypeDAOImpl implements PhoneTypeDAO {
 		}
 		return phoneType;
 	}
-	
+
 	@Override
 	public List<PhoneType> getAllPhoneTypes() {
 		List<PhoneType> phoneTypeList = null;
@@ -58,7 +53,7 @@ public class PhoneTypeDAOImpl implements PhoneTypeDAO {
 		}
 		return phoneTypeList;
 	}
-	
+
 	@Override
 	public Boolean insertPhoneType(PhoneType phoneType) {
 		Boolean save = Boolean.FALSE;
@@ -78,7 +73,7 @@ public class PhoneTypeDAOImpl implements PhoneTypeDAO {
 		}
 		return save;
 	}
-	
+
 	@Override
 	public Boolean updatePhoneType(PhoneType phoneType) {
 		Boolean update = Boolean.FALSE;
@@ -98,7 +93,7 @@ public class PhoneTypeDAOImpl implements PhoneTypeDAO {
 		}
 		return update;
 	}
-	
+
 	@Override
 	public Boolean deletePhoneType(PhoneType phoneType) {
 		Boolean delete = Boolean.FALSE;
@@ -117,5 +112,5 @@ public class PhoneTypeDAOImpl implements PhoneTypeDAO {
 			StandardServiceRegistryBuilder.destroy(HibernateUtil.getRegistry());
 		}
 		return delete;
-	}
+	}*/
 }

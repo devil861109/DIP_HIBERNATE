@@ -1,27 +1,19 @@
 package edu.unam.agenda;
 
 import edu.unam.agenda.hibernate.HibernateUtil;
-import edu.unam.agenda.model.Contact;
-import edu.unam.agenda.model.ContactType;
-import edu.unam.agenda.model.MeansContacts;
-import edu.unam.agenda.model.PhoneType;
-import edu.unam.agenda.service.MeansContactsService;
-import edu.unam.agenda.service.ContactService;
-import edu.unam.agenda.service.PhoneTypeService;
-import edu.unam.agenda.service.ContactTypeService;
-import edu.unam.agenda.service.impl.MeansContactsServiceImpl;
-import edu.unam.agenda.service.impl.ContactServiceImpl;
-import edu.unam.agenda.service.impl.PhoneTypeServiceImpl;
-import edu.unam.agenda.service.impl.ContactTypeServiceImpl;
+import edu.unam.agenda.model.*;
+import edu.unam.agenda.service.*;
+import edu.unam.agenda.service.impl.*;
 
 import java.util.*;
 
 public class AgendaAPP {
     private Scanner sn;
-    private final PhoneTypeService phoneTypeService = PhoneTypeServiceImpl.getInstance();
-    private final ContactTypeService contactTypeService = ContactTypeServiceImpl.getInstance();
+    //private final PhoneTypeService phoneTypeService = PhoneTypeServiceImpl.getInstance();
+    //private final ContactTypeService contactTypeService = ContactTypeServiceImpl.getInstance();
     private final ContactService contactService = ContactServiceImpl.getInstance();
     private final MeansContactsService meansContactsService = MeansContactsServiceImpl.getInstance();
+    private final CatalogService catalogService = CatalogServiceImpl.getInstance();
 
     public static void main(String[] args) {
         HibernateUtil.init();
@@ -250,7 +242,7 @@ public class AgendaAPP {
     }
 
     public void consultaMedioContactoRegistros() {
-        for (PhoneType medioContacto : phoneTypeService.getAllPhoneTypes()) {
+        for (PhoneType medioContacto : catalogService.getAllPhoneType()) {
             System.out.println("Medio Contacto:" + medioContacto.toString());
         }
     }
@@ -259,7 +251,7 @@ public class AgendaAPP {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Dame el id a buscar:");
         int busca = scanner.nextInt();
-        PhoneType medioContacto = phoneTypeService.getPhoneTypeById(busca);
+        PhoneType medioContacto = catalogService.getPhoneTypeById(busca);
         if (medioContacto != null)
             System.out.println("Medio Contacto:" + medioContacto.toString());
         else
@@ -267,7 +259,7 @@ public class AgendaAPP {
     }
 
     public void insertaMedioContactoRegistros() {
-        Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
         PhoneType nuevo = new PhoneType();
         System.out.println("Dame nombre: ");
         nuevo.setName(scanner.nextLine());
@@ -275,11 +267,12 @@ public class AgendaAPP {
         if (phoneTypeService.insertPhoneType(nuevo))
             System.out.println("Insertado correctamente");
         else
-            System.out.println("Error al insertar registro");
+            System.out.println("Error al insertar registro");*/
+        System.out.println("TODO");
     }
 
     public void actualizaMedioContactoRegistros() {
-        Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
         System.out.println("Dame el id a actualizar:");
         int busca = scanner.nextInt();
         scanner.nextLine();//limpieza
@@ -293,11 +286,12 @@ public class AgendaAPP {
             else
                 System.out.println("Error al actualizar registro");
         } else
-            System.out.println("Medio Contacto no encontrado");
+            System.out.println("Medio Contacto no encontrado");*/
+        System.out.println("TODO");
     }
 
     public void eliminaMedioContactoRegistros() {
-        Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
         System.out.println("Dame el id a eliminar:");
         int busca = scanner.nextInt();
         scanner.nextLine();//limpieza
@@ -309,20 +303,26 @@ public class AgendaAPP {
             else
                 System.out.println("Error al eliminar registro");
         } else
-            System.out.println("Medio Contacto no encontrado");
+            System.out.println("Medio Contacto no encontrado");*/
+        System.out.println("TODO");
     }
 
+
     public void consultaTipoContactoRegistros() {
-        for (ContactType tipoContacto : contactTypeService.getAllContactType()) {
-            System.out.println("Tipo Contacto:" + tipoContacto.toString());
+        for (Catalog tipoContacto : catalogService.getAllContactType()) {
+            System.out.println("Medio Contacto:" + tipoContacto.toString());
         }
+		/*for (ContactType tipoContacto : contactTypeService.getAllContactType()) {
+            System.out.println("Tipo Contacto:" + tipoContacto.toString());
+        }*/
     }
 
     public void consultaTipoContactoRegistrosPorId() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Dame el id a buscar:");
         int busca = scanner.nextInt();
-        ContactType tipoContacto = contactTypeService.getContactTypeById(busca);
+        //ContactType tipoContacto = contactTypeService.getContactTypeById(busca);
+        Catalog tipoContacto = catalogService.getContactTypeById(busca);
         if (tipoContacto != null)
             System.out.println("Tipo Contacto:" + tipoContacto.toString());
         else
@@ -330,7 +330,7 @@ public class AgendaAPP {
     }
 
     public void insertaTipoContactoRegistros() {
-        Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
         ContactType nuevo = new ContactType();
         System.out.println("Dame nombre: ");
         nuevo.setName(scanner.nextLine());
@@ -338,11 +338,12 @@ public class AgendaAPP {
         if (contactTypeService.insertContactType(nuevo))
             System.out.println("Insertado correctamente");
         else
-            System.out.println("Error al insertar registro");
+            System.out.println("Error al insertar registro");*/
+        System.out.println("TODO");
     }
 
     public void actualizaTipoContactoRegistros() {
-        Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
         System.out.println("Dame el id a actualizar:");
         int busca = scanner.nextInt();
         scanner.nextLine();//limpieza
@@ -356,11 +357,12 @@ public class AgendaAPP {
             else
                 System.out.println("Error al actualizar registro");
         } else
-            System.out.println("Medio Contacto no encontrado");
+            System.out.println("Medio Contacto no encontrado");*/
+        System.out.println("TODO");
     }
 
     public void eliminaTipoContactoRegistros() {
-        Scanner scanner = new Scanner(System.in);
+		/*Scanner scanner = new Scanner(System.in);
         System.out.println("Dame el id a eliminar:");
         int busca = scanner.nextInt();
         scanner.nextLine();//limpieza
@@ -372,7 +374,8 @@ public class AgendaAPP {
             else
                 System.out.println("Error al eliminar registro");
         } else
-            System.out.println("Medio Contacto no encontrado");
+            System.out.println("Medio Contacto no encontrado");*/
+        System.out.println("TODO");
     }
 
     public void consultaContactoRegistros() {
@@ -409,7 +412,8 @@ public class AgendaAPP {
         System.out.println("Dame ID Tipo Contacto: ");
         int busca = scanner.nextInt();
         scanner.nextLine();
-        ContactType tipoContacto = contactTypeService.getContactTypeById(busca);
+        //ContactType tipoContacto = contactTypeService.getContactTypeById(busca);
+        ContactType tipoContacto = catalogService.getContactTypeById(busca);
         if (tipoContacto != null)
             nuevo.setContactType(tipoContacto);
         else
@@ -419,7 +423,8 @@ public class AgendaAPP {
         System.out.println("Dame ID Medio Contacto: ");
         busca = scanner.nextInt();
         scanner.nextLine();
-        PhoneType medio = phoneTypeService.getPhoneTypeById(busca); //obtencion de catalogo de medio contacto
+        //PhoneType medio = phoneTypeService.getPhoneTypeById(busca); //obtencion de catalogo de medio contacto
+        PhoneType medio = catalogService.getPhoneTypeById(busca); //obtencion de catalogo de medio contacto
         MeansContacts contactoMedio = new MeansContacts(); //creacion de contacto medio
         System.out.println("Dame numero de telefono: ");
         contactoMedio.setValue(scanner.nextLine()); //llenado de datos de contacto medio
@@ -455,7 +460,8 @@ public class AgendaAPP {
             System.out.println("Dame ID Tipo Contacto: ");
             busca = scanner.nextInt();
             scanner.nextLine();
-            ContactType tipoContacto = contactTypeService.getContactTypeById(busca);
+            //ContactType tipoContacto = contactTypeService.getContactTypeById(busca);
+            ContactType tipoContacto = catalogService.getContactTypeById(busca);
             nuevo.setContactType(tipoContacto);
 
             //se eliminan los anteriores para evitar conflictos
@@ -469,13 +475,14 @@ public class AgendaAPP {
             System.out.println("Dame ID Medio Contacto: ");
             busca = scanner.nextInt();
             scanner.nextLine();
-            PhoneType medio = phoneTypeService.getPhoneTypeById(busca); //obtencion de catalogo de medio contacto
+            //PhoneType medio = phoneTypeService.getPhoneTypeById(busca); //obtencion de catalogo de medio contacto
+            PhoneType medio = catalogService.getPhoneTypeById(busca); //obtencion de catalogo de medio contacto
             MeansContacts contactoMedio = new MeansContacts(); //creacion de contacto medio
             System.out.println("Dame numero de telefono: ");
             contactoMedio.setValue(scanner.nextLine()); //llenado de datos de contacto medio
             contactoMedio.setPhoneType(medio); //relacionamos contacto medio con catalogo medio contacto
             contactoMedio.setContact(nuevo); // relacionamos con contacto
-            Set<MeansContacts> contactosMedios = new HashSet<MeansContacts>(); //generamos la coleccion
+            Set<MeansContacts> contactosMedios = new HashSet<>(); //generamos la coleccion
             contactosMedios.add(contactoMedio); //llenamos la coleccion
             nuevo.setMeansContacts(contactosMedios);
             if (contactService.updateContact(nuevo))
