@@ -1,6 +1,6 @@
 package edu.unam.agenda.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity //definir la entidad
 @Table(name = "contact_type") //indicar el nombre de la tabla que representa
